@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Конфигуратор тюнинга - выбирайте детали для вашего автомобиля">
+
+    <title>Конфигуратор - TuningManual3000</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/build-stats.css">
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header__inner">
+                <a href="/" class="logo">
+                    <span class="logo__icon">🏎️</span>
+                    <span class="logo__text">Tuning<span>Manual</span>3000</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="/" class="nav__link">Каталог</a>
+                    <a href="/admin.html" class="nav__link">Админка</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="car-page">
+                    <!-- Main Area: Car Viewer -->
+                    <div class="car-page__main">
+                        <!-- Loading State -->
+                        <div id="loading-state" class="loading">
+                            <div class="spinner"></div>
+                        </div>
+
+                        <!-- Error State -->
+                        <div id="error-state" class="hidden">
+                            <div class="card" style="text-align: center; padding: 60px;">
+                                <h2>😔 Автомобиль не найден</h2>
+                                <p class="mt-2">Попробуйте выбрать другой автомобиль из каталога</p>
+                                <a href="/" class="btn btn--primary mt-3">Вернуться в каталог</a>
+                            </div>
+                        </div>
+
+                        <!-- Car Content (hidden until loaded) -->
+                        <div id="car-content" class="hidden">
+                            <!-- Car Image Viewer -->
+                            <div class="car-viewer" id="car-viewer">
+                                <div class="car-viewer__placeholder" id="car-placeholder">🚗</div>
+                                <img class="car-viewer__image hidden" id="car-image" src="" alt="">
+
+                                <!-- Interactive hotspots will be added dynamically -->
+                                <!-- Example positions for S-chassis -->
+                                <button class="car-viewer__hotspot" data-category="engine" style="top: 5%; left: 10%;"
+                                    title="Двигатель">🔧</button>
+                                <button class="car-viewer__hotspot" data-category="turbo" style="top: 25%; left: 10%;"
+                                    title="Турбина">💨</button>
+                                <button class="car-viewer__hotspot" data-category="exhaust" style="top: 45%; left: 10%;"
+                                    title="Выхлопная система">💥</button>
+                                <button class="car-viewer__hotspot" data-category="suspension"
+                                    style="top: 65%; left: 10%;" title="Подвеска">🔩</button>
+                                <button class="car-viewer__hotspot" data-category="brakes" style="top: 85%; left: 10%;"
+                                    title="Тормоза">🛑</button>
+
+
+                                <button class="car-viewer__hotspot" data-category="engine" style="top: 5%; left: 85%;"
+                                    title="Двигатель">🔧</button>
+                                <button class="car-viewer__hotspot" data-category="turbo" style="top: 25%; left: 85%;"
+                                    title="Турбина">💨</button>
+                                <button class="car-viewer__hotspot" data-category="exhaust" style="top: 45%; left: 85%;"
+                                    title="Выхлопная система">💥</button>
+                                <button class="car-viewer__hotspot" data-category="suspension"
+                                    style="top: 65%; left: 85%;" title="Подвеска">🔩</button>
+                                <button class="car-viewer__hotspot" data-category="brakes" style="top: 85%; left: 85%;"
+                                    title="Тормоза">🛑</button>    
+                            </div>
+                            
+
+                            <!-- Car Info -->
+                            <div class="card car-info">
+                                <div class="car-info__header">
+                                    <h1 class="car-info__title" id="car-title">Загрузка...</h1>
+                                </div>
+                                <p id="car-description" class="car-info__description"></p>
+
+                                <div class="car-info__specs mt-3" id="car-specs">
+                                    <!-- Specs will be populated -->
+                                </div>
+
+                                <!-- Applied Parts -->
+                                <div class="applied-parts" id="applied-parts-section">
+                                    <h3 class="applied-parts__title">
+                                        ✅ Выбранные детали
+                                        <span id="applied-parts-count">(0)</span>
+                                    </h3>
+                                    <div class="applied-parts__list" id="applied-parts-list">
+                                        <p class="text-muted" id="no-parts-message">Кликните на категорию справа, чтобы
+                                            выбрать детали</p>
+                                    </div>
+                                </div>
+
+                                <!-- Build Statistics (Charts) -->
+                                <div id="build-stats" class="build-stats hidden">
+                                    <h3>📊 Статистика сборки</h3>
+
+                                    <!-- Compatibility Score -->
+                                    <div class="stat-card">
+                                        <div class="stat-card__header">
+                                            <span>🔧 Совместимость</span>
+                                            <strong id="compatibility-score">0/10</strong>
+                                        </div>
+                                        <div class="stat-card__bar">
+                                            <div id="compatibility-bar" class="stat-card__bar-fill"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Install Complexity -->
+                                    <div class="stat-card">
+                                        <div class="stat-card__header">
+                                            <span>🔨 Сложность установки</span>
+                                            <strong id="complexity-score">0/10</strong>
+                                        </div>
+                                        <div class="stat-card__bar">
+                                            <div id="complexity-bar" class="stat-card__bar-fill"
+                                                style="background: #ff6384;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Power Stats -->
+                                    <div class="stat-card">
+                                        <div class="stat-card__header">
+                                            <span>⚡ Мощность</span>
+                                            <strong id="power-display">220 л.с.</strong>
+                                        </div>
+                                        <p class="text-muted" style="font-size: 0.9rem; margin-top: 0.5rem;"
+                                            id="power-gain"></p>
+                                    </div>
+
+                                    <!-- Price Estimate -->
+                                    <div class="stat-card">
+                                        <div class="stat-card__header">
+                                            <span>💰 Примерная стоимость</span>
+                                            <strong id="price-display">0 ₽</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Radar Chart (Build Parameters) -->
+                                    <div class="chart-container" style="margin-top: 2rem;">
+                                        <h4 style="margin-bottom: 1rem;">Параметры сборки</h4>
+                                        <canvas id="radar-chart"></canvas>
+                                    </div>
+
+                                    <!-- Bar Chart (Power Comparison) -->
+                                    <div class="chart-container" style="margin-top: 2rem;">
+                                        <h4 style="margin-bottom: 1rem;">Сравнение мощности</h4>
+                                        <canvas id="power-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar: Categories -->
+                    <aside class="car-page__sidebar">
+                        <h3>Категории деталей</h3>
+                        <div class="categories-list" id="categories-list">
+                            <!-- Categories will be loaded here -->
+                            <div class="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer__text">
+                    © 2026 TuningManual3000.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Parts Modal -->
+    <div class="modal-overlay" id="parts-modal">
+        <div class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title">
+                    <span id="modal-icon">🔧</span>
+                    <span id="modal-title">Выберите деталь</span>
+                </h2>
+                <button class="modal__close" id="modal-close">×</button>
+            </div>
+
+            <div class="modal__body">
+                <!-- Loading state -->
+                <div id="modal-loading" class="loading">
+                    <div class="spinner"></div>
+                </div>
+
+                <!-- Parts list -->
+                <div id="modal-parts" class="parts-list hidden">
+                    <!-- Parts will be loaded dynamically -->
+                </div>
+
+                <!-- Selected part details -->
+                <div id="part-details" class="hidden">
+                    <h3 id="part-detail-name"></h3>
+                    <p id="part-detail-manufacturer" class="part-item__manufacturer"></p>
+                    <p id="part-detail-description" class="mt-2"></p>
+                    <div id="part-detail-specs" class="part-specs"></div>
+                </div>
+            </div>
+
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="btn-back-to-list">
+                    ← Назад к списку
+                </button>
+                <button class="btn btn--outline" id="btn-find-market">
+                    🔍 Найти на рынке
+                </button>
+                <button class="btn btn--primary" id="btn-apply-part">
+                    ✅ Применить
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/js/charts.js"></script>
+    <script type="module" src="/js/car.js"></script>
+</body>
+
+</html>

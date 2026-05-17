@@ -1,0 +1,124 @@
+{
+  "forCar": "*",
+  "items": [
+    /* ---------- Audi A6 C5 ---------- */
+    {
+      "id": "audi_a6_c5_cooling_cai_034motorsport",
+      "name": "Cold Air Intake 034Motorsport X34 Carbon Fiber CAI для 2.7T",
+      "category": "engine.intake",
+      "specs": {
+        "powerGain": 10,
+        "torqueGain": 12,
+        "compatibilityScore": 10,
+        "installDifficulty": 2,
+        "price": 18000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Заменить штатный впуск, установить карбон‑короб."
+    },
+
+    /* ---------- BMW E36 — коробка передач ---------- */
+    {
+      "id": "bmw_e36_transmission_swap_zf310",
+      "name": "Комплект замены АКПП на ZF310 для E36",
+      "category": "transmission.swap",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 7,
+        "compatibilityScore": 7,
+        "installDifficulty": 7,
+        "price": 55000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Снять автомат, установить механическую коробку, адаптировать педали."
+    },
+
+    /* ---------- BMW E36 — турбо‑кит M50/M52 ---------- */
+    {
+      "id": "bmw_e36_engine_turbo_m50",
+      "name": "Турбо‑кит для M50/M52 (включая турбоколлектор)",
+      "category": "engine.turbo_kit",
+      "specs": {
+        "powerGain": 150,
+        "torqueGain": 180,
+        "compatibilityScore": 4,
+        "installDifficulty": 9,
+        "price": 110000
+      },
+      "requires": [
+        "fuel_system_bmw_e36_high",
+        "intercooler_bmw_e36_custom"
+      ],
+      "synergy": [],
+      "instruction": "Установить турбоколлектор, комплект турбины T3, интеркулер и подготовить топливную систему."
+    },
+
+    /* ---------- Skoda Octavia A7 — программное обеспечение APR Stage 1 ---------- */
+    {
+      "id": "skoda_octavia_a7_ecu_apr_stage1",
+      "name": "Программное обеспечение APR Stage 1 для Octavia A7",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 30,
+        "torqueGain": 40,
+        "compatibilityScore": 10,
+        "installDifficulty": 2,
+        "price": 12000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Перепрошить штатный ECU через OBD‑II."
+    },
+
+    /* ---------- Volkswagen Golf IV GTI — тормозные колодки ---------- */
+    {
+      "id": "golf_gti_brake_pads_front_brembo",
+      "name": "Тормозные колодки передние Brembo для Golf IV GTI",
+      "category": "brakes.pads.front",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 2,
+        "compatibilityScore": 9,
+        "installDifficulty": 3,
+        "price": 8000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Снять старые колодки, установить новые."
+    },
+
+    /* ---------- Универсальные фильтры (Europe) ---------- */
+    {
+      "id": "oil_filter_europe",
+      "name": "Масляный фильтр европейского бренда (OEM)",
+      "category": "engine.oil_filter",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 3,
+        "compatibilityScore": 10,
+        "installDifficulty": 1,
+        "price": 1100
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Сменить фильтр во время замены масла."
+    },
+    {
+      "id": "air_filter_europe",
+      "name": "Воздушный фильтр европейского бренда (OEM)",
+      "category": "engine.air_filter",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 3,
+        "compatibilityScore": 10,
+        "installDifficulty": 1,
+        "price": 1400
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Сменить фильтр."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+# Docker files
+.dockerignore
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment (will be set via docker-compose)
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+
+# Git
+.git
+.gitignore
+
+# Temporary data files (kept in container)
+data/
+*.tmp
+
+# Temporary JSON files (source data kept in DataBases/)
+tuning_parts_final.json
+cleaned_parts.json
+date.txt
+
+# Temporary reports and patches
+*_report.md
+*_plan.md
+import_to_mongodb.md
+PATCH_*.txt
+test_*.js
+import_*.js

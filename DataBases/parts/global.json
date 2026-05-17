@@ -1,0 +1,65 @@
+{
+  "forCar": "*",
+  "items": [
+    {
+      "id": "air_filter_standard",
+      "name": "Воздушный фильтр стандартный (OEM)",
+      "category": "engine.air_filter",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 3,
+        "compatibilityScore": 10,
+        "installDifficulty": 1,
+        "price": 1500
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Снять старый фильтр, установить новый, затянуть крепление согласно сервису."
+    },
+    {
+      "id": "oil_filter_standard",
+      "name": "Масляный фильтр стандартный (OEM)",
+      "category": "engine.oil_filter",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 3,
+        "compatibilityScore": 10,
+        "installDifficulty": 1,
+        "price": 1200
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Снять фильтр, залить масло, установить новый фильтр."
+    },
+    {
+      "id": "brake_pad_front_universal",
+      "name": "Тормозные колодки передние – универсальные",
+      "category": "brakes.pads.front",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 2,
+        "compatibilityScore": 9,
+        "installDifficulty": 3,
+        "price": 4000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Снять старые колодки, установить новые, прижать тормозной суппорт."
+    },
+    {
+      "id": "brake_pad_rear_universal",
+      "name": "Тормозные колодки задние – универсальные",
+      "category": "brakes.pads.rear",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 2,
+        "compatibilityScore": 9,
+        "installDifficulty": 3,
+        "price": 3500
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Аналогично передним."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+# ====================================
+# TuningManual3000 — Docker Compose (PostgreSQL)
+# ====================================
+# Запуск: docker-compose up --build
+# Остановка: docker-compose down
+#
+# Первый запуск с миграцией данных:
+#   docker-compose --profile migrate up --build
+#
+# pgAdmin (опционально):
+#   docker-compose --profile admin up -d pgadmin
+
+services:
+
+  # ====================================
+  # PostgreSQL 16
+  # ====================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: tuning-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./server/config/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    environment:
+      POSTGRES_USER:     tuning_user
+      POSTGRES_PASSWORD: tuning_password
+      POSTGRES_DB:       tuning_manual
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tuning_user -d tuning_manual"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    networks:
+      - tuning-network
+
+  # ====================================
+  # Миграция данных (one-time, profile: migrate)
+  # ====================================
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tuning-migrate
+    restart: "no"
+    environment:
+      NODE_ENV:          production
+      DB_TYPE:           postgres
+      POSTGRES_HOST:     postgres
+      POSTGRES_PORT:     5432
+      POSTGRES_USER:     tuning_user
+      POSTGRES_PASSWORD: tuning_password
+      POSTGRES_DB:       tuning_manual
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - tuning-network
+    command: node scripts/migrate-to-postgres.js
+    profiles:
+      - migrate
+
+  # ====================================
+  # Node.js Application
+  # ====================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tuning-app-postgres
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV:          production
+      PORT:              3000
+      DB_TYPE:           postgres
+      POSTGRES_HOST:     postgres
+      POSTGRES_PORT:     5432
+      POSTGRES_USER:     tuning_user
+      POSTGRES_PASSWORD: tuning_password
+      POSTGRES_DB:       tuning_manual
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - tuning-network
+    volumes:
+      - ./client:/app/client
+      - /app/node_modules
+
+  # ====================================
+  # pgAdmin (profile: admin)
+  # ====================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: tuning-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL:    admin@tuning.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    depends_on:
+      - postgres
+    networks:
+      - tuning-network
+    profiles:
+      - admin
+
+# ====================================
+# Volumes & Networks
+# ====================================
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  tuning-network:
+    driver: bridge

@@ -1,0 +1,23 @@
+{
+  "charts": {
+    "radar": {
+      "axes": ["Мощность", "Крутящий момент", "Комфорт", "Экономичность", "Надежность"],
+      "scaleMin": 4,
+      "scaleMax": 14,
+      "calculation": {
+        "Мощность": "(basePower + totalPowerGain) / 100",
+        "Крутящий момент": "(baseTorque + totalTorqueGain) / 50",
+        "Комфорт": "10 - average(installDifficulty)",
+        "Экономичность": "max(0, 10 - totalPowerGain / 50)",
+        "Надежность": "average(compatibilityScore)"
+      }
+    }
+  },
+  "displayFormulas": {
+    "totalPower": "basePower + sum(powerGain * (compatibilityScore / 10))",
+    "totalCost": "sum(price)",
+    "buildCompatibility": "average(compatibilityScore) * (hasAllRequired ? 1 : 0.7)",
+    "installDifficulty": "max(installDifficulty)",
+    "totalTorque": "baseTorque + sum(torqueGain * (compatibilityScore / 10))"
+  }
+}

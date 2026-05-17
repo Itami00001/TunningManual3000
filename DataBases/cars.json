@@ -1,0 +1,202 @@
+[
+  {
+    "id": "nissan_silvia_s14",
+    "brand": "Nissan",
+    "model": "Silvia",
+    "generation": "S14",
+    "basePower": 200,
+    "baseTorque": 250,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "nissan_silvia_s15",
+    "brand": "Nissan",
+    "model": "Silvia",
+    "generation": "S15",
+    "basePower": 250,
+    "baseTorque": 280,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "toyota_mark_ii_jzx90",
+    "brand": "Toyota",
+    "model": "Mark II",
+    "generation": "JZX90",
+    "basePower": 250,
+    "baseTorque": 300,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "toyota_mark_ii_jzx100",
+    "brand": "Toyota",
+    "model": "Mark II",
+    "generation": "JZX100",
+    "basePower": 260,
+    "baseTorque": 305,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "toyota_chaser",
+    "brand": "Toyota",
+    "model": "Chaser",
+    "generation": null,
+    "basePower": 250,
+    "baseTorque": 300,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "mitsubishi_lancer_evo_viii",
+    "brand": "Mitsubishi",
+    "model": "Lancer Evolution",
+    "generation": "VIII",
+    "basePower": 280,
+    "baseTorque": 350,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "mitsubishi_lancer_evo_ix",
+    "brand": "Mitsubishi",
+    "model": "Lancer Evolution",
+    "generation": "IX",
+    "basePower": 285,
+    "baseTorque": 360,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "audi_a6_c5",
+    "brand": "Audi",
+    "model": "A6",
+    "generation": "C5",
+    "basePower": 200,
+    "baseTorque": 280,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "bmw_e36",
+    "brand": "BMW",
+    "model": "E36",
+    "generation": null,
+    "basePower": 180,
+    "baseTorque": 250,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "chevrolet_lanos",
+    "brand": "Chevrolet",
+    "model": "Lanos",
+    "generation": null,
+    "basePower": 86,
+    "baseTorque": 115,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "vaz_2107",
+    "brand": "VAZ",
+    "model": "2107",
+    "generation": null,
+    "basePower": 73,
+    "baseTorque": 120,
+    "partsGroup": ["_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "vaz_2114",
+    "brand": "VAZ",
+    "model": "2114",
+    "generation": null,
+    "basePower": 95,
+    "baseTorque": 140,
+    "partsGroup": ["_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "skoda_octavia_a5",
+    "brand": "Skoda",
+    "model": "Octavia",
+    "generation": "A5",
+    "basePower": 102,
+    "baseTorque": 150,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "skoda_octavia_a7",
+    "brand": "Skoda",
+    "model": "Octavia",
+    "generation": "A7",
+    "basePower": 125,
+    "baseTorque": 160,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "skoda_rapid",
+    "brand": "Skoda",
+    "model": "Rapid",
+    "generation": null,
+    "basePower": 105,
+    "baseTorque": 150,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "nissan_skyline_r32",
+    "brand": "Nissan",
+    "model": "Skyline",
+    "generation": "R32",
+    "basePower": 280,
+    "baseTorque": 363,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "nissan_skyline_r34",
+    "brand": "Nissan",
+    "model": "Skyline",
+    "generation": "R34",
+    "basePower": 280,
+    "baseTorque": 363,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "mazda_rx7_fd",
+    "brand": "Mazda",
+    "model": "RX‑7",
+    "generation": "FD",
+    "basePower": 255,
+    "baseTorque": 274,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "honda_civic_ek9",
+    "brand": "Honda",
+    "model": "Civic",
+    "generation": "EK9",
+    "basePower": 140,
+    "baseTorque": 170,
+    "partsGroup": ["jdm", "_global"],
+    "defaultKit": null
+  },
+  {
+    "id": "volkswagen_golf_iv_gti",
+    "brand": "Volkswagen",
+    "model": "Golf IV GTI",
+    "generation": null,
+    "basePower": 150,
+    "baseTorque": 175,
+    "partsGroup": ["europe", "_global"],
+    "defaultKit": null
+  }
+]

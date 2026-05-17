@@ -1,0 +1,480 @@
+{
+  "forCar": "*",
+  "items": [
+    /* ---------- Nissan Silvia S14 ---------- */
+    {
+      "id": "nissan_silvia_s14_turbo_quantum_racing",
+      "name": "Turbo Quantum Racing GT2871 для SR20DET (Nissan Silvia S14)",
+      "category": "engine.turbo",
+      "specs": {
+        "powerGain": 90,
+        "torqueGain": 100,
+        "compatibilityScore": 10,
+        "installDifficulty": 3,
+        "price": 21000
+      },
+      "requires": [
+        "intercooler_nissan_silvia_s14_greddy_ls",
+        "exhaust_nissan_silvia_s14_76mm",
+        "fuel_pump_nissan_silvia_s14_highflow"
+      ],
+      "synergy": [
+        "ecu_nissan_silvia_s14_tomei_chip"
+      ],
+      "instruction": "Установить турбину в штатное место, подключить интеркулер, выхлоп и усиленный топливный насос, выполнить перепрошивку ЭБУ."
+    },
+    {
+      "id": "intercooler_nissan_silvia_s14_greddy_ls",
+      "name": "Интеркулер GReddy LS для S14/S15",
+      "category": "engine.intercooler",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 7,
+        "installDifficulty": 5,
+        "price": 14000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Смонтировать в переднем бампере, установить удлинённые патрубки и хомуты."
+    },
+    {
+      "id": "exhaust_nissan_silvia_s14_76mm",
+      "name": "Выхлопная система 76 mm (3 in) для S14/S15",
+      "category": "exhaust.system",
+      "specs": {
+        "powerGain": 20,
+        "torqueGain": 30,
+        "compatibilityScore": 9,
+        "installDifficulty": 4,
+        "price": 12000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Прикрепить к штатным точкам крепления, при необходимости подрезать фланцы."
+    },
+    {
+      "id": "fuel_pump_nissan_silvia_s14_highflow",
+      "name": "Топливный насос повышенной производительности для S14",
+      "category": "fuel.pump",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 5,
+        "compatibilityScore": 5,
+        "installDifficulty": 6,
+        "price": 18000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить в штатный топливный модуль, подключить к новой системе форсунок."
+    },
+    {
+      "id": "injector_nissan_silvia_s14_id1050x",
+      "name": "Топливные форсунки Injector Dynamics ID1050x",
+      "category": "fuel.injector",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 2,
+        "compatibilityScore": 5,
+        "installDifficulty": 7,
+        "price": 25000
+      },
+      "requires": [
+        "fuel_pump_nissan_silvia_s14_highflow"
+      ],
+      "synergy": [],
+      "instruction": "Установить в ральку, соединить с регулятором давления."
+    },
+    {
+      "id": "camshaft_nissan_silvia_s14_hks_style",
+      "name": "Распредвал HKS style для SR20 (S14)",
+      "category": "engine.camshaft",
+      "specs": {
+        "powerGain": 30,
+        "torqueGain": 35,
+        "compatibilityScore": 4,
+        "installDifficulty": 8,
+        "price": 18000
+      },
+      "requires": [
+        "valve_springs_nissan_silvia_s14_upgraded"
+      ],
+      "synergy": [],
+      "instruction": "Снять головку блока, установить вал, заменить пружины и сделать настройку ЭБУ."
+    },
+    {
+      "id": "ecu_nissan_silvia_s14_tomei_chip",
+      "name": "Чип‑тюнинг ТУЭМИ (ECU) для S14 Zenki",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 8,
+        "installDifficulty": 6,
+        "price": 30000
+      },
+      "requires": [
+        "turbo_nissan_silvia_s14_quantum_racing"
+      ],
+      "synergy": [],
+      "instruction": "Отправить штатный ECU в сервис, вернуть перепрошитый блок."
+    },
+
+    /* ---------- Nissan Silvia S15 ---------- */
+    {
+      "id": "nissan_silvia_s15_turbo_garrett_gt2871r",
+      "name": "Turbo Garrett GT2871R для SR20DET (S15)",
+      "category": "engine.turbo",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 8,
+        "installDifficulty": 5,
+        "price": 20000
+      },
+      "requires": [
+        "intercooler_nissan_silvia_s15_hks_front",
+        "exhaust_nissan_silvia_s15_76mm",
+        "fuel_pump_nissan_silvia_s15_highflow"
+      ],
+      "synergy": [
+        "ecu_nissan_silvia_s15_apex_power"
+      ],
+      "instruction": "Встроить турбину, подключить HKS‑интеркулер, модуль форсунок и перепрошивку."
+    },
+    {
+      "id": "intercooler_nissan_silvia_s15_hks_front",
+      "name": "Интеркулер HKS фронтальный для S15",
+      "category": "engine.intercooler",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 9,
+        "installDifficulty": 5,
+        "price": 15000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить в передний бампер, подключить к турбине."
+    },
+    {
+      "id": "exhaust_nissan_silvia_s15_76mm",
+      "name": "Выпускная система 3‑inch (76 mm) для S15",
+      "category": "exhaust.system",
+      "specs": {
+        "powerGain": 20,
+        "torqueGain": 30,
+        "compatibilityScore": 10,
+        "installDifficulty": 3,
+        "price": 13000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить без доработок."
+    },
+    {
+      "id": "fuel_pump_nissan_silvia_s15_highflow",
+      "name": "Топливный насос повышенной производительности для S15",
+      "category": "fuel.pump",
+      "specs": {
+        "powerGain": 2,
+        "torqueGain": 5,
+        "compatibilityScore": 5,
+        "installDifficulty": 6,
+        "price": 19000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить в топливный модуль, подключить к регулятору."
+    },
+    {
+      "id": "injector_nissan_silvia_s15_sard_850cc",
+      "name": "Топливные форсунки SARD 850 cc для S15",
+      "category": "fuel.injector",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 2,
+        "compatibilityScore": 4,
+        "installDifficulty": 7,
+        "price": 26000
+      },
+      "requires": [
+        "fuel_pump_nissan_silvia_s15_highflow"
+      ],
+      "synergy": [],
+      "instruction": "Установить в ральку, настроить давление."
+    },
+    {
+      "id": "ecu_nissan_silvia_s15_apex_power",
+      "name": "Контроллер ECU APEX'i Power FC D‑Jetro для S15",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 8,
+        "installDifficulty": 6,
+        "price": 32000
+      },
+      "requires": [
+        "turbo_nissan_silvia_s15_garrett_gt2871r"
+      ],
+      "synergy": [],
+      "instruction": "Установить контроллер, выполнить калибровку на стенде."
+    },
+
+    /* ---------- Nissan Skyline R34 (пример) ---------- */
+    {
+      "id": "skyline_r34_intercooler_nismo",
+      "name": "NISMO интеркулер для RB26DETT (R34)",
+      "category": "engine.intercooler",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 8,
+        "installDifficulty": 5,
+        "price": 24000
+      },
+      "requires": [],
+      "synergy": [
+        "turbo_skyline_r34_garrett_double"
+      ],
+      "instruction": "Установить в передний бампер, подключить к системе турбин."
+    },
+    {
+      "id": "turbo_skyline_r34_garrett_double",
+      "name": "Комплект двойных турбин Garrett GT2860R‑7 для RB26DETT",
+      "category": "engine.turbo",
+      "specs": {
+        "powerGain": 180,
+        "torqueGain": 220,
+        "compatibilityScore": 6,
+        "installDifficulty": 7,
+        "price": 65000
+      },
+      "requires": [
+        "intercooler_skyline_r34_nismo",
+        "fuel_system_skyline_r34_high"
+      ],
+      "synergy": [],
+      "instruction": "Установить турбинки, подключить к интеркулеру, модернизировать топливную систему."
+    },
+
+    /* ---------- Mazda RX‑7 FD3S ---------- */
+    {
+      "id": "rx7_fd_turbo_garrett_gt3582r",
+      "name": "Turbo Garrett GT3582R (GT35R) для 13B‑REW (RX‑7 FD)",
+      "category": "engine.turbo",
+      "specs": {
+        "powerGain": 175,
+        "torqueGain": 210,
+        "compatibilityScore": 5,
+        "installDifficulty": 8,
+        "price": 80000
+      },
+      "requires": [
+        "intercooler_rx7_fd_hks_rtype",
+        "fuel_system_rx7_fd_high"
+      ],
+      "synergy": [
+        "ecu_rx7_fd_haltech_elite"
+      ],
+      "instruction": "Установить турбину, собрать кастомный выпуск и вывести к интеркулеру, подключить усиленную топливную систему."
+    },
+    {
+      "id": "intercooler_rx7_fd_hks_rtype",
+      "name": "Интеркулер HKS R‑Type для FD3S",
+      "category": "engine.intercooler",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 9,
+        "installDifficulty": 5,
+        "price": 22000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить в передний бампер, подключить к турбине."
+    },
+    {
+      "id": "exhaust_rx7_fd_racing_beat",
+      "name": "Выпускная система Racing Beat 3‑inch (76 mm) для FD3S",
+      "category": "exhaust.system",
+      "specs": {
+        "powerGain": 30,
+        "torqueGain": 40,
+        "compatibilityScore": 10,
+        "installDifficulty": 3,
+        "price": 28000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить без доработок."
+    },
+    {
+      "id": "ecu_rx7_fd_haltech_elite",
+      "name": "Программируемый ЭБУ Haltech Elite 2500 для FD3S",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 7,
+        "installDifficulty": 8,
+        "price": 45000
+      },
+      "requires": [
+        "turbo_rx7_fd_garrett_gt3582r"
+      ],
+      "synergy": [],
+      "instruction": "Установить блок, выполнить полную калибровку на стенде."
+    },
+
+    /* ---------- Mitsubishi Lancer Evolution VIII (полный Turbo‑Kit) ---------- */
+    {
+      "id": "evo_viii_turbo_kit_complete",
+      "name": "Полный Turbo‑Kit 4G63T 600+ л.с. для Evo VIII",
+      "category": "engine.turbo_kit",
+      "specs": {
+        "powerGain": 320,
+        "torqueGain": 350,
+        "compatibilityScore": 2,
+        "installDifficulty": 9,
+        "price": 120000
+      },
+      "requires": [
+        "fuel_system_evo_viii_high",
+        "intercooler_evo_viii_custom"
+      ],
+      "synergy": [
+        "ecu_evo_viii_ecumaster"
+      ],
+      "instruction": "Полный разбор двигателя, установка стренг‑блоков, турбины, интеркулера, форсированных деталей и настройка ECU."
+    },
+
+    /* ---------- Toyota Mark II (JZX90/JZX100) – подвеска ---------- */
+    {
+      "id": "suspension_jzx90_bc_racing",
+      "name": "Койловеры BC Racing BR Type RS для JZX90/JZX100",
+      "category": "suspension.coilovers",
+      "specs": {
+        "powerGain": 1,
+        "torqueGain": 1,
+        "compatibilityScore": 9,
+        "installDifficulty": 5,
+        "price": 25000
+      },
+      "requires": [
+        "wheel_alignment_jzx90"
+      ],
+      "synergy": [],
+      "instruction": "Установить, выполнить сход‑развал."
+    },
+
+    /* ---------- Toyota Mark II (JZX90) – ECU ---------- */
+    {
+      "id": "ecu_jzx90_apexi_power_fc",
+      "name": "Программируемый ЭБУ A'PEXi Power FC для 1JZ‑GTE",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 9,
+        "installDifficulty": 6,
+        "price": 34000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить блок, настроить через FC‑Datalogit."
+    },
+
+    /* ---------- Audi A6 C5 (2.7T) ---------- */
+    {
+      "id": "audi_a6_c5_coil_conversion",
+      "name": "Coil Conversion & ICM Delete Kit (Audi RS6) для 2.7T",
+      "category": "engine.ignition",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 8,
+        "installDifficulty": 5,
+        "price": 15000
+      },
+      "requires": [],
+      "synergy": [
+        "ecu_audi_a6_c5_link_g4"
+      ],
+      "instruction": "Заменить катушки, удалить ICM, перепрошить ECU."
+    },
+    {
+      "id": "ecu_audi_a6_c5_link_g4",
+      "name": "Программируемый ЭБУ Link G4+ Fury для A6 C5",
+      "category": "engine.ecu",
+      "specs": {
+        "powerGain": 3,
+        "torqueGain": 5,
+        "compatibilityScore": 9,
+        "installDifficulty": 7,
+        "price": 38000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Установить блок, выполнить калибровку."
+    },
+    {
+      "id": "intake_audi_a6_c5_rs4_pipe",
+      "name": "Впускные патрубки (RS4 B5) для турбин K04",
+      "category": "engine.intake",
+      "specs": {
+        "powerGain": 5,
+        "torqueGain": 8,
+        "compatibilityScore": 9,
+        "installDifficulty": 5,
+        "price": 13000
+      },
+      "requires": [],
+      "synergy": [],
+      "instruction": "Сменить штатные патрубки, установить новые."
+    },
+
+    /* ---------- Skoda Octavia A5 – двигатель 2.0 L AZJ ---------- */
+    {
+      "id": "skoda_octavia_a5_engine_azj",
+      "name": "Двигатель 2.0 L AZJ (VW) для Octavia A5",
+      "category": "engine.swap",
+      "specs": {
+        "powerGain": 30,
+        "torqueGain": 35,
+        "compatibilityScore": 8,
+        "installDifficulty": 6,
+        "price": 42000
+      },
+      "requires": [
+        "mounts_skoda_octavia_a5",
+        "ecu_skoda_octavia_a5_apr"
+      ],
+      "synergy": [],
+      "instruction": "Установить двигатель, заменить крепления и провести перепрошивку."
+    },
+
+    /* ---------- Skoda Rapid – Stage 3 Turbo‑Kit ---------- */
+    {
+      "id": "rapid_tsi_stage3_kit",
+      "name": "Turbo‑Kit K04 (RacingLine) Stage 3 для 1.4 TSI Rapid",
+      "category": "engine.turbo_kit",
+      "specs": {
+        "powerGain": 85,
+        "torqueGain": 120,
+        "compatibilityScore": 3,
+        "installDifficulty": 8,
+        "price": 95000
+      },
+      "requires": [
+        "fuel_system_rapid_high",
+        "intercooler_rapid_custom"
+      ],
+      "synergy": [
+        "ecu_rapid_apr_stage3"
+      ],
+      "instruction": "Установить турбину K04, интеркулер, обновить топливную систему, перепрошить ECU."
+    }
+  ]
+}

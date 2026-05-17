@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Админ-панель TuningManual3000 - управление базой данных">
+
+    <title>Админ-панель - TuningManual3000</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Admin Panel Specific Styles */
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .admin-sidebar {
+            background: var(--color-bg-secondary);
+            border-right: 1px solid var(--color-border);
+            padding: 2rem 1rem;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .admin-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .admin-nav-item:hover {
+            background: var(--color-bg-glass);
+            color: var(--color-text-primary);
+        }
+
+        .admin-nav-item--active {
+            background: var(--color-accent-gradient);
+            color: white;
+        }
+
+        .admin-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card__value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card__label {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .data-table th {
+            background: var(--color-bg-tertiary);
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .data-table tr:hover {
+            background: var(--color-bg-glass);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn--sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--color-bg-tertiary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-primary);
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge--success {
+            background: rgba(0, 210, 106, 0.2);
+            color: var(--color-success);
+        }
+
+        .badge--warning {
+            background: rgba(255, 184, 0, 0.2);
+            color: var(--color-warning);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content--active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header__inner">
+                <a href="/" class="logo">
+                    <span class="logo__icon">🏎️</span>
+                    <span class="logo__text">Tuning<span>Manual</span>3000</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="/" class="nav__link">Каталог</a>
+                    <a href="/admin.html" class="nav__link nav__link--active">Админка</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Admin Layout -->
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <nav class="admin-nav">
+                    <a class="admin-nav-item admin-nav-item--active" data-tab="dashboard">
+                        <span>📊</span>
+                        <span>Обзор</span>
+                    </a>
+                    <a class="admin-nav-item" data-tab="parts">
+                        <span>🔧</span>
+                        <span>Детали</span>
+                    </a>
+                    <a class="admin-nav-item" data-tab="cars">
+                        <span>🚗</span>
+                        <span>Автомобили</span>
+                    </a>
+                    <a class="admin-nav-item" data-tab="categories">
+                        <span>📁</span>
+                        <span>Категории</span>
+                    </a>
+                    <a class="admin-nav-item" data-tab="kits">
+                        <span>📦</span>
+                        <span>Комплекты</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-content">
+                <!-- Alert messages -->
+                <div id="alert-container"></div>
+
+                <!-- Dashboard Tab -->
+                <div id="tab-dashboard" class="tab-content tab-content--active">
+                    <div class="admin-header">
+                        <h1>📊 Обзор системы</h1>
+                    </div>
+
+                    <div class="admin-stats">
+                        <div class="stat-card">
+                            <div class="stat-card__value" id="stat-cars">0</div>
+                            <div class="stat-card__label">Автомобилей</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__value" id="stat-parts">0</div>
+                            <div class="stat-card__label">Деталей</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__value" id="stat-categories">0</div>
+                            <div class="stat-card__label">Категорий</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__value" id="stat-kits">0</div>
+                            <div class="stat-card__label">Комплектов</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <h3 class="mb-3">🚀 Быстрые действия</h3>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <button class="btn btn--primary" onclick="switchTab('parts')">
+                                    ➕ Добавить деталь
+                                </button>
+                                <button class="btn btn--primary" onclick="switchTab('cars')">
+                                    ➕ Добавить автомобиль
+                                </button>
+                                <button class="btn btn--primary" onclick="switchTab('kits')">
+                                    ➕ Создать комплект
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parts Tab -->
+                <div id="tab-parts" class="tab-content">
+                    <div class="admin-header">
+                        <h1>🔧 Управление деталями</h1>
+                        <button class="btn btn--primary" onclick="showAddPartForm()">➕ Добавить деталь</button>
+                    </div>
+
+                    <div class="search-bar">
+                        <input type="text" class="search-input" id="parts-search" placeholder="Поиск деталей...">
+                        <select class="form-select" id="parts-category-filter" style="width: 200px;">
+                            <option value="">Все категории</option>
+                        </select>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th>Категория</th>
+                                        <th>Производитель</th>
+                                        <th>Цена</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="parts-table-body">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--color-text-muted);">
+                                            Загрузка...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Add Part Form (hidden by default) -->
+                    <div class="card mt-4" id="add-part-form-container" style="display: none;">
+                        <div class="card__body">
+                            <h3 class="mb-3">➕ Добавить деталь</h3>
+                            <form id="add-part-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Название</label>
+                                        <input type="text" class="form-input" id="part-name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Категория</label>
+                                        <select class="form-select" id="part-category" required>
+                                            <option value="">Выберите категорию...</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Производитель</label>
+                                        <input type="text" class="form-input" id="part-manufacturer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Цена (₽)</label>
+                                        <input type="number" class="form-input" id="part-price" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Описание</label>
+                                    <textarea class="form-textarea" id="part-description" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Характеристики (JSON)</label>
+                                    <textarea class="form-textarea" id="part-specs" rows="4" placeholder='{"power": "250 л.с.", "torque": "280 Нм"}'></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label form-label--required">Совместимость с автомобилями</label>
+                                    <div id="compatibility-select" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                        <!-- Checkboxes loaded dynamically -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">URL изображения</label>
+                                    <input type="url" class="form-input" id="part-image">
+                                </div>
+
+                                <div style="display: flex; gap: 1rem;">
+                                    <button type="submit" class="btn btn--primary">💾 Сохранить</button>
+                                    <button type="button" class="btn" onclick="hideAddPartForm()">❌ Отмена</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cars Tab -->
+                <div id="tab-cars" class="tab-content">
+                    <div class="admin-header">
+                        <h1>🚗 Управление автомобилями</h1>
+                        <button class="btn btn--primary">➕ Добавить автомобиль</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Бренд</th>
+                                        <th>Модель</th>
+                                        <th>Поколение</th>
+                                        <th>Базовая мощность</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cars-table-body">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--color-text-muted);">
+                                            Загрузка...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div id="tab-categories" class="tab-content">
+                    <div class="admin-header">
+                        <h1>📁 Управление категориями</h1>
+                        <button class="btn btn--primary">➕ Добавить категорию</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Иконка</th>
+                                        <th>Название</th>
+                                        <th>Slug</th>
+                                        <th>Порядок</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categories-table-body">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--color-text-muted);">
+                                            Загрузка...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kits Tab -->
+                <div id="tab-kits" class="tab-content">
+                    <div class="admin-header">
+                        <h1>📦 Управление комплектами</h1>
+                        <button class="btn btn--primary">➕ Создать комплект</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th>Автомобиль</th>
+                                        <th>Описание</th>
+                                        <th>Статус</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="kits-table-body">
+                                    <tr>
+                                        <td colspan="5" style="text-align: center; color: var(--color-text-muted);">
+                                            Загрузка...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/js/admin.js"></script>
+</body>
+
+</html>
